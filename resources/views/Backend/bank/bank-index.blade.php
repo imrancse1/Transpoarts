@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
     <section class="content-header">
     <br>  <h1 class="text-center">
-      <b> Check all Product List </b>
+      <b> Check all Bank </b>
       </h1>
     </section>
 
@@ -19,7 +19,7 @@
         <div class="col-lg-12 margin-tb ">
            
             <div class="pull-right">
-                <a class="btn btn-success" href="{{route('create-product')}}"> Create New Product</a>
+                <a class="btn btn-success" href="{{route('create-bank')}}"> Create New Bank</a>
             </div>
         </div>
     </div>
@@ -33,24 +33,26 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Product Name</th>
-                  <th>Wirehouse Name</th>
+                  <th>Bnak Name</th>
+                  <th>Bnak Licence</th>
+                  <th>Bank Address</th>
                   <th width="250px">Action</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                   @foreach($product as $key=>$product)
+                   @foreach($bank as $key=>$bank)
                   <tr>
                     <td>{{++$key}}</td>
-                    <td>{{$product->product_name}}</td>
-                    <td>{{$product->wirehouse_name}}</td>
+                    <td>{{$bank->bank_name}}</td>
+                    <td>{{$bank->bank_licence}}</td>
+                    <td>{{$bank->bank_address}}</td>
                     
                 
                     <td>
-                      <a href="{{route('product-edit',$product->product_id)}}" class="btn btn-xs btn-info"><span class="fa fa-edit"></span></a>
+                      <a href="{{route('bank-edit',$bank->bank_id)}}" class="btn btn-xs btn-info"><span class="fa fa-edit"></span></a>
 
-                       <a href="{{route('product-delete',$product->product_id)}}" onclick="return confirm('If you want to delete this item Press OK')" class="btn btn-xs btn-danger"><span class="fa fa-trash"></span></a>
+                       <a href="{{route('bank-delete',$bank->bank_id)}}" onclick="return confirm('If you want to delete this item Press OK')" class="btn btn-xs btn-danger"><span class="fa fa-trash"></span></a>
                     </td>
               </tr>
               @endforeach

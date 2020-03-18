@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class SupplierBill extends Model
 {
     protected $fillable = [
-        'product_name'
+        'date','raw_supplier_id','payment_mode','pay_amount'
     ];
 }

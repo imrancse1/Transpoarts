@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/',[
 	'as' => '/',
 	'uses' => 'DashBoardController@index'
@@ -35,335 +37,359 @@ Route::group(['middleware' => 'adminAuth'],function(){
 			'as' => '/logout',
 			'uses' => 'LoginController@Logout'
 		]);
-// Category Controller
-		Route::get('/categoty',[
-			'as' => '/categoty',
-			'uses' => 'VehicleCatagoryController@index'
+// Batch Controller
+		Route::get('/batch',[
+			'as' => '/batch',
+			'uses' => 'BatchController@index'
 		]);
 
-		Route::get('/categotyCreate',[
-			'as' => 'category.create',
-			'uses' => 'VehicleCatagoryController@create'
+		Route::get('/batch-create',[
+			'as' => 'create-batch',
+			'uses' => 'BatchController@createBatch'
 		]);
 
-		Route::post('/categotystore',[
-			'as' => 'categoty.store',
-			'uses' => 'VehicleCatagoryController@store'
+		Route::post('/batch-batch',[
+			'as' => 'store-batch',
+			'uses' => 'BatchController@storeBatch'
 		]);
 
-		Route::post('/categotyupdate/{categoryId}',[
-			'as' => 'categoty.update',
-			'uses' => 'VehicleCatagoryController@categoryUpdate'
+		Route::get('/batch-edit/{batchId}',[
+			'as' => 'batch-edit',
+			'uses' => 'BatchController@editBatch'
 		]);
 
-
-		Route::get('/categotyedit/{categoryId}',[
-			'as' => 'category-edit',
-			'uses' => 'VehicleCatagoryController@categoryEdit'
-		]);
-		Route::get('/categorydestroy/{categoryId}',[
-			'as' => 'category.destroy',
-			'uses' => 'VehicleCatagoryController@categoryDestroy'
+		Route::post('/batch-update/{batchId}',[
+			'as' => 'update-batch',
+			'uses' => 'BatchController@updateBatch'
 		]);
 
-		// inputVehicle controller
-
-		Route::get('/inputVehicle',[
-				'as' => '/inputVehicle',
-				'uses' => 'InputVehicleController@index'
+		Route::get('/batch-delete/{batchId}',[
+			'as' => 'batch-delete',
+			'uses' => 'BatchController@deleteBatch'
 		]);
 
-		Route::get('/Vehiclecreate',[
-				'as' => 'vehicle.create',
-				'uses' => 'InputVehicleController@create'
+		// supplier route controller 
+		Route::get('/supplier',[
+			'as' => '/supplier',
+			'uses' => 'RawSupplierController@index'
 		]);
 
-		Route::get('/Vehiclestore',[
-				'as' => 'vehicle.store',
-				'uses' => 'InputVehicleController@store'
+		Route::get('/supplier-create',[
+			'as' => 'create-supplier',
+			'uses' => 'RawSupplierController@createSupplier'
 		]);
 
-		Route::post('/Vehiclestore',[
-				'as' => 'vehicle.store',
-				'uses' => 'InputVehicleController@store'
+		Route::post('/supplier-create',[
+			'as' => 'store-supplier',
+			'uses' => 'RawSupplierController@storeSupplier'
 		]);
 
-		Route::get('/vehicle-edit/{vehicleId}',[
-				'as' => 'vehicle-edit',
-				'uses' => 'InputVehicleController@vehicleEdit'
-		]);
-		Route::post('/vehicle.update/{vehicleId}',[
-				'as' => 'vehicle.update',
-				'uses' => 'InputVehicleController@vehicleUpdate'
-		]);
-		Route::get('/vehicle-delete/{vehicleId}',[
-				'as' => 'vehicle-delete',
-				'uses' => 'InputVehicleController@vehicleDelete'
+		Route::get('/supplier-edit/{supplierId}',[
+			'as' => 'supplier-edit',
+			'uses' => 'RawSupplierController@editSupplier'
 		]);
 
-		//tripInfo controller
-		Route::get('/tripInfo',[
-				'as' => '/tripInfo',
-				'uses' => 'TripInfoController@index'
-		]);
-		Route::get('/tripInfocreate',[
-				'as' => '/tripInfo.create',
-				'uses' => 'TripInfoController@create'
-		]);
-		Route::post('/tripInfostore',[
-				'as' => 'tripInfo-store',
-				'uses' => 'TripInfoController@store'
+		Route::post('/supplier-update/{supplierId}',[
+			'as' => 'update-supplier',
+			'uses' => 'RawSupplierController@updateSupplier'
 		]);
 
-		Route::get('/trip-edit/{tripId}',[
-				'as' => 'trip-edit',
-				'uses' => 'TripInfoController@tripEdit'
+		Route::get('/supplier-delete/{supplierId}',[
+			'as' => 'supplier-delete',
+			'uses' => 'RawSupplierController@deleteSupplier'
 		]);
-
-		Route::post('/tripInfo-update/{tripId}',[
-				'as' => 'tripInfo-update',
-				'uses' => 'TripInfoController@tripUpdate'
-		]);
-
-		Route::get('/trip-delete/{tripId}',[
-				'as' => 'trip-delete',
-				'uses' => 'TripInfoController@tripDelete'
-		]);
-
-
-		///reception controller
-
-		Route::get('/reception',[
-				'as' => '/reception',
-				'uses' => 'ReceptionController@index'
-		]);
-		Route::get('/receptioncreate',[
-				'as' => '/reception.create',
-				'uses' => 'ReceptionController@create'
-		]);
-		Route::post('/receptionstore',[
-				'as' => 'reception.store',
-				'uses' => 'ReceptionController@store'
-		]);
-		Route::get('/reception-edit/{receptionId}',[
-				'as' => 'reception-edit',
-				'uses' => 'ReceptionController@receptionEdit'
-		]);
-		Route::post('/reception-update/{receptionId}',[
-				'as' => 'reception-update',
-				'uses' => 'ReceptionController@receptionUpdate'
-		]);
-		Route::get('/reception-delete/{receptionId}',[
-				'as' => 'reception-delete',
-				'uses' => 'ReceptionController@receptionDelete'
-		]);
-
-		///selectVehicle route controller
-
-		Route::get('/selectVehicle',[
-				'as' => '/selectVehicle',
-				'uses' => 'SelectVehicleController@index'
-		]);
-
-		Route::get('/selectVehiclecreate',[
-				'as' => 'selectvehicle.create',
-				'uses' => 'SelectVehicleController@create'
-		]);
-
-		Route::post('/selectVehiclestore',[
-				'as' => 'selectvehicle.store',
-				'uses' => 'SelectVehicleController@store'
-		]);
-
-		Route::get('/selectvehicles-edit/{selectvehiclesId}',[
-				'as' => 'selectvehicles-edit',
-				'uses' => 'SelectVehicleController@selectvehiclesEdit'
-		]);
-		Route::post('/selectvehicle-update/{selectvehiclesId}',[
-				'as' => 'selectvehicle-update',
-				'uses' => 'SelectVehicleController@selectvehicleUpdate'
-		]);
-		Route::get('/selectvehicle-delete/{selectvehiclesId}',[
-				'as' => 'selectvehicles-delete',
-				'uses' => 'SelectVehicleController@selectvehicleDelete'
-		]);
-
-		///drives controller
-		Route::get('/drives',[
-				'as' => '/drives',
-				'uses' => 'DriveController@index'
-		]);
-
-		Route::get('/drivescreate',[
-				'as' => 'drives.create',
-				'uses' => 'DriveController@create'
-		]);
-
-		Route::post('/drivesstore',[
-				'as' => 'drives.store',
-				'uses' => 'DriveController@store'
-		]);
-		Route::get('/drive-edit/{driveId}',[
-				'as' => 'drive-edit',
-				'uses' => 'DriveController@driveEdit'
-		]);
-		Route::post('/drive-update/{driveId}',[
-				'as' => 'drives-update',
-				'uses' => 'DriveController@driveUpdate'
-		]);
-		Route::get('/drive-delete/{driveId}',[
-				'as' => 'drive-delete',
-				'uses' => 'DriveController@driveDelete'
-		]);
-		
-
-		
-
-		//priceTrip route controller
-		Route::get('/priceTrip',[
-				'as' => '/priceTrip',
-				'uses' => 'PriceTripController@index'
-		]);
-
-		Route::get('/priceTripcreate',[
-				'as' => 'priceTrip.create',
-				'uses' => 'PriceTripController@create'
-		]);
-
-		Route::post('/priceTripstore',[
-				'as' => 'priceTrip.store',
-				'uses' => 'PriceTripController@store'
-		]);
-		Route::get('/priceTrip-edit/{priceTripId}',[
-				'as' => 'priceTrip-edit',
-				'uses' => 'PriceTripController@priceTripEdit'
-		]);
-		Route::post('/priceTrip-update/{priceTripId}',[
-				'as' => 'priceTrip-update',
-				'uses' => 'PriceTripController@priceTripUpdate'
-		]);
-		Route::get('/priceTrip-delete/{priceTripId}',[
-				'as' => 'priceTrip-delete',
-				'uses' => 'PriceTripController@priceTripDelete'
-		]);
-
 
 		//product route controller
-		Route::get('/product',[
-				'as' => '/product',
-				'uses' => 'ProductController@index'
+		route::get('/product',[
+			'as' => '/product',
+			'uses' => 'ProductController@index'
 		]);
-		Route::get('/productcreate',[
-				'as' => '/product.create',
-				'uses' => 'ProductController@create'
+		route::get('/product-create',[
+			'as' => 'create-product',
+			'uses' => 'ProductController@createProduct'
 		]);
-		Route::post('/productstore',[
-				'as' => 'product.store',
-				'uses' => 'ProductController@store'
+		route::post('/product-store',[
+					'as' => 'store-product',
+					'uses' => 'ProductController@storeProduct'
 		]);
-		Route::get('/product-edit/{productId}',[
-				'as' => 'product-edit',
-				'uses' => 'ProductController@productEdit'
+		route::get('/product-edit/{productId}',[
+					'as' => 'product-edit',
+					'uses' => 'ProductController@editProduct'
+		]);
+		route::post('/product-update/{productId}',[
+					'as' => 'update-product',
+					'uses' => 'ProductController@updateProduct'
+		]);
+		route::get('/product-delete/{productId}',[
+					'as' => 'product-delete',
+					'uses' => 'ProductController@deleteProduct'
 		]);
 
-		Route::post('/product-update/{productId}',[
-				'as' => 'product-update',
-				'uses' => 'ProductController@productUpdate'
+		// Wirehouse Controller route
+
+		route::get('/wirehouse',[
+					'as' => '/wirehouse',
+					'uses' => 'WirehouseController@index'
 		]);
-		Route::get('/product-delete/{productId}',[
-				'as' => 'product-delete',
-				'uses' => 'ProductController@productDelete'
+		route::get('/create-wirehouse',[
+					'as' => 'create-wirehouse',
+					'uses' => 'WirehouseController@createWirehouse'
+		]);
+		route::post('/store-wirehouse',[
+					'as' => 'store-wirehouse',
+					'uses' => 'WirehouseController@storeWirehouse'
+		]);
+		route::get('/wirehouse-edit/{wirehouseId}',[
+					'as' => 'wirehouse-edit',
+					'uses' => 'WirehouseController@editWirehouse'
+		]);
+		route::post('/update-wirehouse/{wirehouseId}',[
+					'as' => 'update-wirehouse',
+					'uses' => 'WirehouseController@updateWirehouse'
+		]);
+		route::get('/delete-wirehouse/{wirehouseId}',[
+					'as' => 'wirehouse-delete',
+					'uses' => 'WirehouseController@deleteWirehouse'
 		]);
 
-		//tripCosting route controller
+		// bank controller route
+		route::get('/bank',[
+					'as' => '/bank',
+					'uses' => 'BankController@index'
+		]);
+		route::get('/create-bank',[
+					'as' => 'create-bank',
+					'uses' => 'BankController@createBank'
+		]);
+		route::post('/store-bank',[
+					'as' => 'store-bank',
+					'uses' => 'BankController@storeBank'
+		]);
+		route::get('/bank-edit/{bankId}',[
+					'as' => 'bank-edit',
+					'uses' => 'BankController@editBank'
+		]);
+		route::post('/bank-update/{bankId}',[
+					'as' => 'update-bank',
+					'uses' => 'BankController@updateBank'
+		]);
+		route::get('/bank-delete/{bankId}',[
+					'as' => 'bank-delete',
+					'uses' => 'BankController@deleteBank'
+		]);
+
+		//trsnsport route controller
+		route::get('/transport',[
+					'as' => '/transport',
+					'uses' => 'TransportController@index'
+		]);
+		route::get('/transport-create',[
+					'as' => 'create-transport',
+					'uses' => 'TransportController@createTransport'
+		]);
+		route::post('/transport-store',[
+					'as' => 'store-transport',
+					'uses' => 'TransportController@storeTransport'
+		]);
+		route::get('/transport-edit/{transportId}',[
+					'as' => 'transport-edit',
+					'uses' => 'TransportController@editTransport'
+		]);
+		route::post('/transport-update/{transportId}',[
+					'as' => 'update-transport',
+					'uses' => 'TransportController@updateTransport'
+		]);
+		route::get('/transport-delete/{transportId}',[
+					'as' => 'transport-delete',
+					'uses' => 'TransportController@deleteTransport'
+		]);
+
+		// purchase route controller
+		route::get('/purchase',[
+					'as' => '/purchase',
+					'uses' => 'PurchaseController@index'
+		]);
+		route::get('/purchase-create',[
+					'as' => 'create-purchase',
+					'uses' => 'PurchaseController@createPurchase'
+		]);
+		route::post('/purchase-store',[
+					'as' => 'store-purchase',
+					'uses' => 'PurchaseController@storePurchase'
+		]);
+		route::get('/purchase-edit/{purchaseId}',[
+					'as' => 'purchase-edit',
+					'uses' => 'PurchaseController@editPurchase'
+		]);
+		route::post('/purchase-update/{purchaseId}',[
+					'as' => 'update-purchase',
+					'uses' => 'PurchaseController@updatePurchase'
+		]);
+		route::get('/purchase-delete/{purchaseId}',[
+					'as' => 'purchase-delete',
+					'uses' => 'PurchaseController@deletePurchase'
+		]);
+		route::get('/lessPurchase',[
+					'as' => '/lessPurchase',
+					'uses' => 'PurchaseController@lessPurchase'
+		]);
+		route::get('/lessPurchase-delete/{lessPurchaseId}',[
+					'as' => 'lessPurchase-delete',
+					'uses' => 'PurchaseController@deleteLessPurchase'
+		]);
+		 Route::get('supplierWiseWirehouse/{supplierId}', [
+		'as' => 'supplierWiseWirehouse',
+		'uses' => 'PurchaseController@supplierWiseWirehouse'
+		]);
+
+	    Route::get('wirehouseWiseProducts/{wirehouseId}', [
+		'as' => 'wirehouseWiseProducts',
+		'uses' => 'PurchaseController@wirehouseWiseProducts'
+		]);
+
+		Route::get('productWiseRemain/{productId}', [
+		'as' => 'productWiseRemain',
+		'uses' => 'PurchaseController@productWiseRemain'
+		]);
+
+		Route::get('purchase-edit/wirehouseWiseProducts/{wirehouseId}',[
+				'as' => 'wirehouseWiseProducts',
+				'uses' => 'PurchaseController@editwirehouseWiseProducts'
+		]);
+		Route::get('purchase-edit/productWiseRemain/{productId}',[
+				'as' => 'productWiseRemain',
+				'uses' => 'PurchaseController@editProductWiseRemain'
+		]);
 		
-		Route::get('/tripCosting',[
-				'as' => '/tripCosting',
-				'uses' => 'TripCostingController@index'
+
+		///supplierBilling route controller
+		
+		route::get('/supplierBill',[
+					'as' => '/supplierBill',
+					'uses' => 'SupplierBillController@index'
 		]);
-		Route::get('/tripCostingcreate',[
-				'as' => '/tripCost.create',
-				'uses' => 'TripCostingController@create'
+		route::get('/supplierBill-create',[
+					'as' => 'create-supplierBill',
+					'uses' => 'SupplierBillController@create'
 		]);
-		Route::post('/tripCostingstore',[
-				'as' => 'tripCost.store',
-				'uses' => 'TripCostingController@store'
+		route::post('/supplierBill-store',[
+					'as' => 'store-supplierBill',
+					'uses' => 'SupplierBillController@storeSupplierBill'
 		]);
-		Route::get('/tripCost-edit/{tripCostId}',[
-				'as' => 'tripCost-edit',
-				'uses' => 'TripCostingController@tripCostEdit'
+		route::get('/supplierBill-edit/{supplierBillId}',[
+					'as' => 'supplierBill-edit',
+					'uses' => 'SupplierBillController@editSupplierBill'
 		]);
-		Route::post('/tripCost-update/{tripCostId}',[
-				'as' => 'tripCost-update',
-				'uses' => 'TripCostingController@tripCostUpdate'
+		route::post('/supplierBill-update/{supplierBillId}',[
+					'as' => 'update-supplierBill',
+					'uses' => 'SupplierBillController@updateSupplierBill'
 		]);
-		Route::get('/tripCost-delete/{tripCostId}',[
-				'as' => 'tripCost-delete',
-				'uses' => 'TripCostingController@tripCostDelete'
+		route::get('/supplierBill-delete/{supplierBillId}',[
+					'as' => 'supplierBill-delete',
+					'uses' => 'SupplierBillController@deleteSupplierBill'
+		]);
+
+		//  showSupplier route controller
+		
+		route::get('/showSupplier',[
+					'as' => '/showSupplier',
+					'uses' => 'ShowSupplierController@index'
+		]);
+		route::get('/showpurchase',[
+					'as' => '/showpurchase',
+					'uses' => 'ShowSupplierController@showpurchase'
 		]);
 
 
-		//fuelExpenses route controller
-		Route::get('/fuelExpenses',[
-				'as' => '/fuelExpenses',
-				'uses' => 'FuelExpensesController@index'
+		//inventory Route controller
+		
+		route::get('/inventory',[
+					'as' => '/inventory',
+					'uses' => 'InventoryController@index'
 		]);
-		Route::get('/fuelExpensescreate',[
-				'as' => '/fuelExpenses.create',
-				'uses' => 'FuelExpensesController@create'
+		route::get('/inventory-create',[
+					'as' => 'create-inventory',
+					'uses' => 'InventoryController@createInventory'
+		]);
+		route::post('/inventory-store',[
+					'as' => 'store-inventory',
+					'uses' => 'InventoryController@storeInventory'
+		]);
+		route::get('/inventory-edit/{inventoryId}',[
+					'as' => 'inventory-edit',
+					'uses' => 'InventoryController@editInventory'
+		]);
+		route::post('/update-inventory/{inventoryId}',[
+					'as' => 'update-inventory',
+					'uses' => 'InventoryController@updateInventory'
+		]);
+		route::get('/delete-inventory/{inventoryId}',[
+					'as' => 'inventory-delete',
+					'uses' => 'InventoryController@deleteInventory'
+		]);
+
+	    Route::get('wirehouseWiseProduct/{wirehouseId}', [
+		'as' => 'wirehouseWiseProduct',
+		'uses' => 'InventoryController@wirehouseWiseProduct'
 		]);
 		
-		Route::post('/fuelExpensesstore',[
-				'as' => 'fuelExpenses.store',
-				'uses' => 'FuelExpensesController@store'
+		Route::get('productWiseStock/{productId}', [
+		'as' => 'productWiseStock',
+		'uses' => 'InventoryController@productWiseStock'
 		]);
-		Route::get('/fuelExpense-edit/{fuelExpenseId}',[
-				'as' => 'fuelExpense-edit',
-				'uses' => 'FuelExpensesController@fuelExpenseEdit'
+		Route::get('productWiseDeduction/{productId}', [
+				'as' => 'productWiseDeduction',
+				'uses' => 'InventoryController@productWiseDeduction'
 		]);
-		Route::post('/fuelExpense-update/{fuelExpenseId}',[
-				'as' => 'fuelExpenses-update',
-				'uses' => 'FuelExpensesController@fuelExpenseUpdate'
-		]);
-		Route::get('/fuelExpense-delete/{fuelExpenseId}',[
-				'as' => 'fuelExpense-delete',
-				'uses' => 'FuelExpensesController@fuelExpenseDelete'
-		]);
-		
-
-		//tripCashReceive route controller
-
-		Route::get('/tripCashReceive',[
-				'as' => '/tripCashReceive',
-				'uses' => 'TripCashReceiveController@index'
-		]);
-		Route::get('/tripCashReceivecreate',[
-				'as' => 'tripCashReceive.create',
-				'uses' => 'TripCashReceiveController@create'
-		]);
-		Route::post('/tripCashReceivestore',[
-				'as' => 'tripCashReceive.store',
-				'uses' => 'TripCashReceiveController@store'
-		]);
-		Route::get('/tripCashReceive-edit/{tripCashReceiveId}',[
-				'as' => 'tripCashReceive-edit',
-				'uses' => 'TripCashReceiveController@tripCashReceiveEdit'
-		]);
-		Route::post('/tripCashReceive-update/{tripCashReceiveId}',[
-				'as' => 'tripCashReceive-update',
-				'uses' => 'TripCashReceiveController@tripCashReceiveUpdate'
-		]);
-		Route::get('/tripCashReceive-delete/{tripCashReceiveId}',[
-				'as' => 'tripCashReceive-delete',
-				'uses' => 'TripCashReceiveController@tripCashReceiveDelete'
+		Route::get('productWiseAmountId/{productId}', [
+				'as' => 'productWiseAmountId',
+				'uses' => 'InventoryController@productWiseAmountId'
 		]);
 
-		//Datatable  route
-		Route::get('/dataTable',[
-			'as' => 'data-table',
-			'uses' => 'DashBoardController@dataTableShow'
+		route::get('/inventory-show-stock',[
+					'as' => 'show-stock',
+					'uses' => 'InventoryController@showStock'
 		]);
-	
+
+
+// WorkOrderController route
+
+		route::get('/workOrder',[
+					'as' => '/workOrder',
+					'uses' => 'WorkOrderController@workOrder'
+		]);
+		route::get('/create-workOrder',[
+					'as' => 'create-workOrder',
+					'uses' => 'WorkOrderController@createWorkOrder'
+		]);
+		route::post('/store-workOder',[
+					'as' => 'store-workOder',
+					'uses' => 'WorkOrderController@saveWorkOrder'
+		]);
+
+
+
+		Route::get('supplierWiseProduct/{productId}', [
+				'as' => 'supplierWiseProduct',
+				'uses' => 'WorkOrderController@supplierWiseProduct'
+		]);
+		Route::get('productWiseOrder/{supplierId}', [
+				'as' => 'productWiseOrder',
+				'uses' => 'WorkOrderController@productWiseOrder'
+		]);
+		Route::get('supplierWiseRemain/{supplierId}', [
+				'as' => 'supplierWiseRemain',
+				'uses' => 'WorkOrderController@supplierWiseRemain'
+		]);
+
+
+
+
+
 });
 
 
+ // <option value="">===Select wirehouse===</option>
+ //                    @foreach($wirehouses as $wirehouse)
+ //                    <option value="{{$wirehouse->wirehouse_id}}">{{$wirehouse->wirehouse_name }}</option>
+ //                    @endforeach

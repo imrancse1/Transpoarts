@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Transport extends Model
 {
     protected $fillable = [
-        'product_name'
+        'vehicle_name','up_trip','down_trip'
     ];
 }

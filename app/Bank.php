@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Bank extends Model
 {
     protected $fillable = [
-        'product_name'
+        'bank_name','bank_licence','bank_address'
     ];
 }

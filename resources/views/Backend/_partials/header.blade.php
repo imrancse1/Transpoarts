@@ -1,8 +1,8 @@
-<header class="main-header">
+<header class="main-header"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <nav class="navbar navbar-static-top" style="background-color:#2874a0">
       <div class="container">
         <div class="navbar-header">
-          <a href="{{URL::to('/dashboard')}}" class="navbar-brand"><b>T</b>ransports</a>
+          <a href="{{URL::to('/dashboard')}}" class="navbar-brand"><b>P</b>urchase</a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>
           </button>
@@ -102,90 +102,124 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-          <ul class="nav navbar-nav">
+          <ul class="nav navbar-nav ">
 
-           <!--  <li class="active">
-              <a href="{{route('data-table')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-user-md"></i>
-                Admin
-              </a>
-            </li> -->
+            <!-- <li class="active">-->
+            <!--  <a href="{{route('/batch')}}" class="btn btn-app" style="margin-top:7px;">-->
+            <!--    <i class="fa fa-user"></i>-->
+            <!--    Batch-->
+
+            <!--  </a>-->
+            <!--</li>-->
+
+             
+
             <li class="active">
-              <a href="{{route('/categoty')}}" class="btn btn-app" style="margin-top:7px;">
+              <a href="{{route('/supplier')}}" class="btn btn-app" style="margin-top:7px;">
                 <i class="fa fa-user"></i>
-                Vehicle Catagory
+                Supplier
 
-              </a>
-            </li>
-
-            <li class="active">
-              <a href="{{route('/inputVehicle')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-gears"></i>
-                Input Vehicle
-              </a>
-            </li>
-
-            <li class="active">
-              <a href="{{route('/tripInfo')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-stethoscope"></i>
-                Trip Info
               </a>
             </li>
 
             <li class="active">
               <a href="{{route('/product')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-product-hunt"></i>
-                Product
+                <i class="fa fa-user"></i>
+                Product List
+
               </a>
             </li>
 
             <li class="active">
-              <a href="{{route('/selectVehicle')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-gear"></i>
-                Select Vehicle
+              <a href="{{route('/wirehouse')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Wirehouse
+
               </a>
             </li>
 
             <li class="active">
-              <a href="{{route('/drives')}}" class="btn btn-app" style="margin-top:7px;">
+              <a href="{{route('/bank')}}" class="btn btn-app" style="margin-top:7px;">
                 <i class="fa fa-user"></i>
-                Drives
-              </a>
-            </li>
-            <li class="active">
-              <a href="{{route('/reception')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-user"></i>
-                Reception
-              </a>
-            </li>
-            <li class="active">
-              <a href="{{route('/priceTrip')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-user"></i>
-                Price Trip
-              </a>
-            </li>
-            <li class="active">
-              <a href="{{route('/fuelExpenses')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-user"></i>
-                Fuel Expenses
-              </a>
-            </li>
-            <li class="active">
-              <a href="{{route('/tripCosting')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-user"></i>
-                Trip Costing
-              </a>
-            </li>
-            <li class="active">
-              <a href="{{route('/tripCashReceive')}}" class="btn btn-app" style="margin-top:7px;">
-                <i class="fa fa-user"></i>
-                Trip Cash Receive
+                Bank
+
               </a>
             </li>
 
+            <li class="active">
+              <a href="{{route('/transport')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Transport
+
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="{{route('/purchase')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Purchase
+
+              </a>
+            </li>
+            
+           <!--  <li class="active">
+              <a href="{{route('/workOrder')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Work Order
+
+              </a>
+            </li> -->
+            
+            <!--<li class="active">-->
+            <!--  <a href="{{route('/lessPurchase')}}" class="btn btn-app" style="margin-top:7px;">-->
+            <!--    <i class="fa fa-user"></i>-->
+            <!--    Less Purchase-->
+
+            <!--  </a>-->
+            <!--</li>-->
+
+             <li class="active">
+              <a href="{{route('/inventory')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Inventory
+
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="{{route('/supplierBill')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Supplier Billing
+
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="{{route('/showSupplier')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Show all Supplier List
+              </a>
+            </li>
+
+            <li class="active">
+              <a href="{{route('/showpurchase')}}" class="btn btn-app" style="margin-top:7px;">
+                <i class="fa fa-user"></i>
+                Show all Purchase List
+              </a>
+            </li>
+            
+          
           </ul>
-          </ul>
+
+          
+
+            
+            
+
         </div>
       </div>
     </nav>
   </header>
+
+
+   

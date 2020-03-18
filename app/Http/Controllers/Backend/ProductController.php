@@ -4,73 +4,84 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
-use Session;
 use App\Product;
-
+use App\Wirehouse;
+use Session;
 
 class ProductController extends Controller
 {
     public function index(){
-    	$products = Product::all();
-    	return view('Backend.product.product-index',compact('products'));
+    	//$product = Product::all();
+        $product = Product::join('wirehouses','wirehouses.wirehouse_id','=','products.wirehouse_id')
+        ->get();
+    	return view('Backend.product.product-index',compact('product'));
     }
 
-     public function create(){
-     	
-    	return view('Backend.product.product-create');
+    public function createProduct(){
+        $wirehouses = Wirehouse::all();
+    	return view('Backend.product.product-create',compact('wirehouses'));
     }
 
-     public function store(Request $request){
+    public function storeProduct(Request $request){
 
     	$this->validate($request,[
     		'product_name' => 'required',
-    		'weight_unit_tons' => 'required'
+            'wirehouse_id' => 'required'
 
     	]);
 
     	$data = new Product();
     	$data->product_name = $request->product_name;
-    	$data->weight_unit_tons = $request->weight_unit_tons;
+        $data->wirehouse_id = $request->wirehouse_id;
     	$data->save();
 
     	 return redirect()->route('/product')
                         ->with('success','Product created successfully.');
     }
 
+    public function editProduct($productId){
+    	 // echo $productId;
+         $products = Product::where('product_id',$productId)->first();
 
-     public function productEdit($productId)
-    {
-       // echo $productId;
-         $product = Product::where('product_id',$productId)->first();
-         return view('Backend.product.product-edit',compact('product'));
-    }
+          $wirehouses = Wirehouse::get([
+            'wirehouses.*'
+        ]); 
 
-    public function productUpdate(Request $request,$productId)
-    {
-        //return $request->all();
-        try{
-            $updateProduct = Product::where('product_id',$productId)
-            ->update([
-                'product_name' => $request->product_name,
-                'weight_unit_tons' => $request->weight_unit_tons
-                ]);
-           if($updateProduct){
-                Session::flash('success','Product Updated successfully!!!');
-           }else {
-                Session::flash('error','Something Went Wrong!!!');
-           } 
-        }catch(\Exception $e){
-            //return $e;
-            Session::flash('error',$e->errorInfo[2]);
-        }
-        return redirect()->route('/product');
-       
+         return view('Backend.product.product-edit',compact('products','wirehouses'));
     }
 
 
 
-    public function productDelete($productId)
+	public function updateProduct(Request $request,$productId)
+	    {
+	        //return $request->all();
+	        try{
+	            $updateProduct = Product::where('product_id',$productId)
+	            ->update([
+	                'product_name' => $request->product_name,
+                    'wirehouse_id' => $request->wirehouse_id
+	                ]);
+	           if($updateProduct){
+	                Session::flash('success','Product Updated successfully!!!');
+	           }else {
+	                Session::flash('error','Something Went Wrong!!!');
+	           } 
+	        }catch(\Exception $e){
+	            //return $e;
+	            Session::flash('error',$e->errorInfo[2]);
+	        }
+	        return redirect()->route('/product');
+	       
+	    }
+
+
+
+
+
+
+
+
+    public function deleteProduct($productId)
     {
         try{
              $product = Product::where('product_id',$productId)
@@ -87,5 +98,4 @@ class ProductController extends Controller
          return redirect()->route('/product');
        
     }
-
 }
